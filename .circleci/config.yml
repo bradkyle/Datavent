@@ -34,7 +34,7 @@ jobs:
       - image: circleci/node:9.8.0
     steps:
       - checkout:
-          path: ~/project/datavent
+          path: ~/project
       - run:
           name: File system orientation
           command: pwd && ls
