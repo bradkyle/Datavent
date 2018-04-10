@@ -6,6 +6,7 @@ references:
 jobs:
   # Build debug APK for unit tests and an instrumented test APK
   build:
+    working_directory: ~/project
     docker:
       - image: circleci/node:9.8.0
     steps:
