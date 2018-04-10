@@ -11,7 +11,7 @@ jobs:
       - image: circleci/node:9.8.0
     steps:
       - checkout
-      - run: cd datavent/dashboard/
+      - run: cd datavent/dashboard/ && pwd && ls
       - run:
           name: Update npm
           command: 'sudo npm install -g npm@latest'
@@ -30,7 +30,7 @@ jobs:
       - image: circleci/node:9.8.0
     steps:
       - checkout
-      - run: cd datavent/dashboard/
+      - run: cd datavent/dashboard/ && pwd && ls
       - run:
           name: Run unit tests
           command: npm test
