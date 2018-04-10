@@ -1,0 +1,1 @@
+This is a general implementation of a full stack application using modern or unique techniques that I find interesting.

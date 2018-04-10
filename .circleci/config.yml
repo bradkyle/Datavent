@@ -1,0 +1,40 @@
+
+
+version: 2
+references:
+  # We will define reusable references here
+jobs:
+  # Build debug APK for unit tests and an instrumented test APK
+  build:
+    working_directory: ~/datavent
+    docker:
+      - image: circleci/node:9.8.0
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install packages with npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules      
+  test:
+    docker:
+      - image: circleci/node:9.8.0
+    steps:
+      - checkout
+      - run:
+          name: Run unit tests
+          command: npm test
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
+      - test
