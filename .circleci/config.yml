@@ -31,6 +31,8 @@ jobs:
       - image: circleci/node:9.8.0
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: 
           name: Run unit tests
           command: npm test
@@ -46,6 +48,7 @@ jobs:
       - run:
           name: Deploy dashboard to firebase hosting
           command: firebase deploy --token "$FIREBASE_DEPLOY_TOKEN"
+      
 
 workflows:
   version: 2
