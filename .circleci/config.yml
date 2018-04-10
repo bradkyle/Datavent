@@ -6,7 +6,7 @@ references:
 jobs:
   # Build debug APK for unit tests and an instrumented test APK
   build:
-    working_directory: ~/build
+    working_directory: /home/circleci/project/datavent/dashboard
     docker:
       - image: circleci/node:9.8.0
     steps:
@@ -26,12 +26,12 @@ jobs:
             - node_modules
 
   test_dev:
+    working_directory: /home/circleci/project/datavent/dashboard
     docker:
       - image: circleci/node:9.8.0
     steps:
       - checkout
-      - run: cd datavent/dashboard/ && pwd && ls
-      - run:
+      - run: 
           name: Run unit tests
           command: npm test
 
