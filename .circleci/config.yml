@@ -18,7 +18,7 @@ jobs:
           command: cd datavent && pwd && ls
       - run:
           name: File system orientation
-          command: cd dashboard && pwd && ls
+          command: cd ./datavent/dashboard && pwd && ls
       - run:
           name: Update npm
           command: 'sudo npm install -g npm@latest'
