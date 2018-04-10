@@ -11,7 +11,9 @@ jobs:
       - image: circleci/node:9.8.0
     steps:
       - checkout
-      - run: cd datavent/dashboard/ && pwd && ls
+      - run:
+        name: File system orientation
+        command: pwd && ls
       - run:
           name: Update npm
           command: 'sudo npm install -g npm@latest'
@@ -31,6 +33,9 @@ jobs:
       - image: circleci/node:9.8.0
     steps:
       - checkout
+      - run:
+        name: File system orientation
+        command: pwd && ls
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: 
