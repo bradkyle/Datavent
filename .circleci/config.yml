@@ -37,7 +37,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:9.8.0
-    step:
+    steps:
       - checkout
       - run:
           name: Install flutter tools
