@@ -28,7 +28,7 @@ jobs:
             - node_modules
 
   test_dev:
-    build_directory: /home/circleci/project/datavent/dashboard
+    working_directory: /home/circleci/project/datavent/dashboard
     docker:
       - image: circleci/node:9.8.0
     steps:
