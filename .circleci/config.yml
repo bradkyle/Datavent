@@ -6,12 +6,10 @@ references:
 jobs:
   # Build debug APK for unit tests and an instrumented test APK
   build:
-    working_directory: ~/project/datavent/dashboard
     docker:
       - image: circleci/node:9.8.0
     steps:
-      - checkout:
-          path: ~/project/datavent
+      - checkout
       - run:
           name: File system orientation
           command: pwd && ls
