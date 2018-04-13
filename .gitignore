@@ -36,7 +36,6 @@
 
 # Ignore vagrant 
 .vagrant/
-Vagrantfile
 
 # Logs
 logs
@@ -109,3 +108,6 @@ typings/
 
 # .tfvars files
 *.tfvars
+
+# account keys
+account.json

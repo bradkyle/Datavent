@@ -1,11 +1,15 @@
-
+machine:
+  docker_layer_caching: true  
 
 version: 2
 references:
   # We will define reusable references here
 jobs:
-  # Build debug APK for unit tests and an instrumented test APK
-  build:
+  
+  # Build
+  # -------------------------------------------------------------->
+
+  build_dashboard:
     working_directory: ~/project/datavent/dashboard
     docker:
       - image: circleci/node:9.8.0
@@ -27,8 +31,11 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+            
+  # Test
+  # -------------------------------------------------------------->
 
-  test_dev:
+  test_dashboard:
     working_directory: ~/project/datavent/dashboard
     docker:
       - image: circleci/node:9.8.0
@@ -40,9 +47,15 @@ jobs:
           command: pwd && ls
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Run linting
+          command: npm lint
       - run: 
-          name: Run unit tests
+          name: Run tests
           command: npm test
+
+  # Deploy
+  # -------------------------------------------------------------->
 
   deploy:
     docker:
@@ -50,21 +63,25 @@ jobs:
     steps:
       - checkout
       - run:
+          name: File system orientation
+          command: pwd && ls
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
           name: Install flutter tools
           command: npm install -g firebase-tools
       - run:
           name: Deploy dashboard to firebase hosting
-          command: firebase deploy --token "$FIREBASE_DEPLOY_TOKEN"
+          command: cd datavent/dashboard/ && firebase deploy --token "$FIREBASE_DEPLOY_TOKEN"
       
-
 workflows:
   version: 2
   workflow:
     jobs:
-      - build
-      - test_dev:
+      - build_dashboard
+      - test_dashboard:
           requires:
-            - build
+            - build_dashboard
           filters:
             branches:
               only:
@@ -72,8 +89,8 @@ workflows:
                 - /feature-.*/
       - deploy:
           requires:
-            - build
-            - test_dev
+            - build_dashboard
+            - test_dashboard
           filters:
             branches:
               only: master
