@@ -19,6 +19,20 @@ import './mock' // simulation data
 
 import * as filters from './filters' // global filters
 
+import firebase from 'firebase'
+
+// Initialize Firebase
+var config = {
+  apiKey: 'AIzaSyBFuzfljFRD8GkO4GYd5qBz3aY9j_ByoXQ',
+  authDomain: 'datavent-ba7dd.firebaseapp.com',
+  databaseURL: 'https://datavent-ba7dd.firebaseio.com',
+  projectId: 'datavent-ba7dd',
+  storageBucket: 'datavent-ba7dd.appspot.com',
+  messagingSenderId: '742579788953'
+}
+
+firebase.initializeApp(config)
+
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)
