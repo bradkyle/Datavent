@@ -1,29 +1,15 @@
-import request from '@/utils/request'
+import firebase from 'firebase'
 
-export function loginByUsername(username, password) {
-  const data = {
-    username,
-    password
-  }
-  return request({
-    url: '/login/login',
-    method: 'post',
-    data
+export function loginByUsername(email, password) {
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    console.log(error.message + ': ' + error.code)
   })
 }
 
 export function logout() {
-  return request({
-    url: '/login/logout',
-    method: 'post'
-  })
-}
-
-export function getUserInfo(token) {
-  return request({
-    url: '/user/info',
-    method: 'get',
-    params: { token }
+  firebase.auth().signOut().catch(function(error) {
+    // An error happened.
+    console.log(error.message + ': ' + error.code)
   })
 }
 

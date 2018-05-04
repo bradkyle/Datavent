@@ -21,6 +21,8 @@ import * as filters from './filters' // global filters
 
 import firebase from 'firebase'
 
+store.dispatch('SetRoutes')
+
 // Initialize Firebase
 var config = {
   apiKey: 'AIzaSyBFuzfljFRD8GkO4GYd5qBz3aY9j_ByoXQ',
