@@ -20,6 +20,7 @@ import './mock' // simulation data
 import * as filters from './filters' // global filters
 
 import firebase from 'firebase'
+import '@firebase/firestore'
 
 store.dispatch('SetRoutes')
 

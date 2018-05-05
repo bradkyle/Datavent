@@ -1,10 +1,16 @@
 import request from '@/utils/request'
+import firebase from 'firebase'
+import '@firebase/firestore'
+
+const collection = 'people'
 
 export function fetchList(query) {
-  return request({
-    url: '/person/list',
-    method: 'get',
-    params: query
+  firebase.firestore().collection(collection).get().then((data) => {
+    console.log('People')
+    return {
+      total: data.length,
+      items: data
+    }
   })
 }
 
