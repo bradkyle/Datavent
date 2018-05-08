@@ -5,7 +5,8 @@
 
 module.exports = {
 
-    list: function(db, collection, query) {
+    // List all documents
+    list: function(db, collection) {
         db.collection(collection).get()
             .then((querySnapshot) => {
                 const items = []
@@ -17,6 +18,7 @@ module.exports = {
             });
     },
 
+    // Create a new document
     create: function(db, collection, data){
         db.collection(collection).add(data)
             .then(function(docRef) {
@@ -27,6 +29,7 @@ module.exports = {
             });
     },
 
+    // Read a document by id
     read: function(db, collection, doc){
         db.collection(collection).doc(doc).get()
             .then(function(doc) {

@@ -1,32 +1,123 @@
-var sinon = require('sinon');
-const test = require('firebase-functions-test')();
+const myFunctions = require('../crud');
 
-// Mock the Firebase configuration
-require('firebase-functions').config = jest.fn(() => {
-  console.log('Jest firebase functions.config being called');
-  return {
-    firebase: {
-      databaseURL: 'https://not-a-project.firebaseio.com',
-      storageBucket: 'not-a-project.appspot.com'
+// jest.mock('cors'); // See manual mock in ../__mocks__/cors.js
+// require('cors'); 
+
+var firebasemock = require('firebase-mock');
+
+const fixtureData = {
+  __collection__: {
+    people: {
+      __doc__: {
+        person_a: {
+          name: '',
+
+          __collection__: {
+            events: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:events/event_a'
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    gmail: {
-      email: 'testsender@test.com',
-      password: 'testpassword'
+    events: {
+      __doc__: {
+        event_a: {
+          name: '',
+
+          __collection__: {
+            businesses: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:businesses/business_a'
+                }
+              }
+            },
+            tables: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:tables/table_a'
+                }
+              }
+            },
+            people:{
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:people/person_a'
+                }
+              }
+            }
+          }
+        }        
+      }
+    },
+    businesses: {
+      __doc__: {   
+        business_a: {
+          name: '',
+
+          __collection__: {
+            people: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:people/person_a'
+                }
+              }
+            }
+          }
+        }             
+      }
+    },
+    tables: {
+      __doc__: {   
+        table_a: {
+          name: '',
+
+          __collection__: {
+            people: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:people/person_a'
+                }
+              }
+            }
+          }
+        }             
+      }
     }
-  };
-});
+  }
+}
 
-
-// test functionality for crud
-
-const myFunctions = require('../crud.js');
-
-describe('CRUD', () => {
-
-  beforeEach((done) => {
-    
-  });
-
+describe('', () => {
   
+  var db = new firebasemock.MockFirestore();
+
+  describe('List all people', done => {
+
+    test('returns all people', done => {
+      
+    });  
+
+  })
+
+  describe('Create a person', done => {
+
+  })
+
+  describe('Read a person', done => {
+
+  })
+
+  describe('Update a person', done => {
+
+  })
+
+  describe('Remove a person', done => {
+
+  })
 
 })

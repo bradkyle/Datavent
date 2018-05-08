@@ -77,28 +77,6 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '/campaigns',
-    component: Layout,
-    redirect: '/campaigns/index',
-    children: [{
-      path: 'index',
-      component: _import('example/table/complexTable'),
-      name: 'campaigns',
-      meta: { title: 'Campaigns', icon: 'documentation', noCache: true }
-    }]
-  },
-  {
-    path: '/tags',
-    component: Layout,
-    redirect: '/tags/index',
-    children: [{
-      path: 'index',
-      component: _import('example/table/complexTable'),
-      name: 'tags',
-      meta: { title: 'Tags', icon: 'documentation', noCache: true }
-    }]
-  },
-  {
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
@@ -112,7 +90,8 @@ export const constantRouterMap = [
         icon: 'lock',
         roles: ['admin'] // or you can only set roles in sub nav
       }
-    }]
+    }], 
+    hidden: true    
   },
 
   {
@@ -123,7 +102,8 @@ export const constantRouterMap = [
       component: _import('svg-icons/index'),
       name: 'icons',
       meta: { title: 'icons', icon: 'icon', noCache: true }
-    }]
+    }], 
+    hidden: true    
   },
 
   {
@@ -147,7 +127,8 @@ export const constantRouterMap = [
       { path: 'count-to', component: _import('components-demo/countTo'), name: 'countTo-demo', meta: { title: 'countTo' }},
       { path: 'mixin', component: _import('components-demo/mixin'), name: 'componentMixin-demo', meta: { title: 'componentMixin' }},
       { path: 'back-to-top', component: _import('components-demo/backToTop'), name: 'backToTop-demo', meta: { title: 'backToTop' }}
-    ]
+    ], 
+    hidden: true    
   },
 
   {
@@ -163,7 +144,8 @@ export const constantRouterMap = [
       { path: 'keyboard', component: _import('charts/keyboard'), name: 'keyboardChart', meta: { title: 'keyboardChart', noCache: true }},
       { path: 'line', component: _import('charts/line'), name: 'lineChart', meta: { title: 'lineChart', noCache: true }},
       { path: 'mixchart', component: _import('charts/mixChart'), name: 'mixChart', meta: { title: 'mixChart', noCache: true }}
-    ]
+    ], 
+    hidden: true    
   },
 
   {
@@ -195,7 +177,8 @@ export const constantRouterMap = [
         ]
       },
       { path: 'tab/index', icon: 'tab', component: _import('example/tab/index'), name: 'tab', meta: { title: 'tab' }}
-    ]
+    ], 
+    hidden: true    
   },
 
   {
@@ -210,7 +193,8 @@ export const constantRouterMap = [
     children: [
       { path: 'create-form', component: _import('form/create'), name: 'createForm', meta: { title: 'createForm', icon: 'table' }},
       { path: 'edit-form', component: _import('form/edit'), name: 'editForm', meta: { title: 'editForm', icon: 'table' }}
-    ]
+    ], 
+    hidden: true    
   },
 
   {
@@ -225,14 +209,16 @@ export const constantRouterMap = [
     children: [
       { path: '401', component: _import('errorPage/401'), name: 'page401', meta: { title: 'page401', noCache: true }},
       { path: '404', component: _import('errorPage/404'), name: 'page404', meta: { title: 'page404', noCache: true }}
-    ]
+    ], 
+    hidden: true    
   },
 
   {
     path: '/error-log',
     component: Layout,
     redirect: 'noredirect',
-    children: [{ path: 'log', component: _import('errorLog/index'), name: 'errorLog', meta: { title: 'errorLog', icon: 'bug' }}]
+    children: [{ path: 'log', component: _import('errorLog/index'), name: 'errorLog', meta: { title: 'errorLog', icon: 'bug' }}], 
+    hidden: true    
   },
 
   {
@@ -248,7 +234,8 @@ export const constantRouterMap = [
       { path: 'export-excel', component: _import('excel/exportExcel'), name: 'exportExcel', meta: { title: 'exportExcel' }},
       { path: 'export-selected-excel', component: _import('excel/selectExcel'), name: 'selectExcel', meta: { title: 'selectExcel' }},
       { path: 'upload-excel', component: _import('excel/uploadExcel'), name: 'uploadExcel', meta: { title: 'uploadExcel' }}
-    ]
+    ], 
+    hidden: true    
   },
 
   {
@@ -257,27 +244,31 @@ export const constantRouterMap = [
     redirect: '/zip/download',
     alwaysShow: true,
     meta: { title: 'zip', icon: 'zip' },
-    children: [{ path: 'download', component: _import('zip/index'), name: 'exportZip', meta: { title: 'exportZip' }}]
+    children: [{ path: 'download', component: _import('zip/index'), name: 'exportZip', meta: { title: 'exportZip' }}], 
+    hidden: true    
   },
 
   {
     path: '/theme',
     component: Layout,
     redirect: 'noredirect',
-    children: [{ path: 'index', component: _import('theme/index'), name: 'theme', meta: { title: 'theme', icon: 'theme' }}]
+    children: [{ path: 'index', component: _import('theme/index'), name: 'theme', meta: { title: 'theme', icon: 'theme' }}], 
+    hidden: true    
   },
 
   {
     path: '/clipboard',
     component: Layout,
     redirect: 'noredirect',
-    children: [{ path: 'index', component: _import('clipboard/index'), name: 'clipboardDemo', meta: { title: 'clipboardDemo', icon: 'clipboard' }}]
+    children: [{ path: 'index', component: _import('clipboard/index'), name: 'clipboardDemo', meta: { title: 'clipboardDemo', icon: 'clipboard' }}], 
+    hidden: true    
   },
 
   {
     path: '/i18n',
     component: Layout,
-    children: [{ path: 'index', component: _import('i18n-demo/index'), name: 'i18n', meta: { title: 'i18n', icon: 'international' }}]
+    children: [{ path: 'index', component: _import('i18n-demo/index'), name: 'i18n', meta: { title: 'i18n', icon: 'international' }}], 
+    hidden: true    
   },
 
   { path: '*', redirect: '/404', hidden: true }

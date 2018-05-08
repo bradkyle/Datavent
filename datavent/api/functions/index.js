@@ -2,11 +2,16 @@ const functions = require('firebase-functions');
 const app = require('express')();
 const cookieParser = require('cookie-parser')();
 var crud = require("./crud.js");
+var tags = require("./tags.js")
 
 // firebase firestore
 const admin = require('firebase-admin');
 admin.initializeApp();
 var db = admin.firestore()
+
+const PDFDocument = require('pdfkit')
+
+tags.tagMaker()
 
 const cors = require('cors')({ origin: true });
 
@@ -61,27 +66,27 @@ app.get('/hello', (req, res) => {
 
 // list
 app.get('/person/list', (req, res) => {
-  res.send(crud.list(db, 'people', ''))
+  res.send(crud.list(db, 'people', ''));
 });
 
 // create
 app.post('/person', (req, res) => {
-  res.send(`Hello ${req.params.name}`);
+  res.send(crud.create(db, 'people', ''))
 });
 
 // read
 app.get('/person/:id', (req, res) => {
-  res.send(`Sub function`);
+  res.send(crud.read(db, 'people', ''))
 });
 
 // update
 app.get('/person/:id', (req, res) => {
-  res.send(`Hello ${req.params.name}`);
+  res.send(crud.update(db, 'people', ''))
 });
 
 // delete
 app.delete('/person/:id', (req, res) => {
-  res.send(`Hello ${req.params.name}`);
+  res.send(crud.delete(db, 'people', ''))
 });
 
 // Businesses
@@ -172,15 +177,21 @@ app.delete('/rsvp/:id', (req, res) => {
 // -------------------------------------------->
 
 // list
-app.get('/business/list', (req, res) => {
+app.get('/tags/list', (req, res) => {
   res.send(`Root page`);
 });
 
 // create
-app.post('/business', (req, res) => {
-  res.send(`Hello ${req.params.name}`);
+app.post('/tags', (req, res) => {
+ 
+  
+
 });
 
+// read
+app.get('/tags/:id', (req, res) => {
+  res.send(`Sub function`);
+});
 
 // We name this function "route", which you can see is 
 // still surfaced in the HTTP URLs below.

@@ -1,0 +1,113 @@
+ca7ae8cf1b4d1bcea2b2b53787e28adb
+const myFunctions = require('../crud');
+
+// jest.mock('cors'); // See manual mock in ../__mocks__/cors.js
+// require('cors'); 
+
+require('mock-cloud-firestore');
+
+const fixtureData = {
+  __collection__: {
+    people: {
+      __doc__: {
+        person_a: {
+          name: '',
+
+          __collection__: {
+            events: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:events/event_a'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    events: {
+      __doc__: {
+        event_a: {
+          name: '',
+
+          __collection__: {
+            businesses: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:businesses/business_a'
+                }
+              }
+            },
+            tables: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:tables/table_a'
+                }
+              }
+            },
+            people: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:people/person_a'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    businesses: {
+      __doc__: {
+        business_a: {
+          name: '',
+
+          __collection__: {
+            people: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:people/person_a'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    tables: {
+      __doc__: {
+        table_a: {
+          name: '',
+
+          __collection__: {
+            people: {
+              __doc__: {
+                user_b: {
+                  reference: '__ref__:people/person_a'
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
+describe('', () => {
+
+  const db = new MockFirebase(fixtureData);
+
+  describe('List all people', done => {
+
+    test('returns all people', done => {});
+  });
+
+  describe('Create a person', done => {});
+
+  describe('Read a person', done => {});
+
+  describe('Update a person', done => {});
+
+  describe('Remove a person', done => {});
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNydWQuc3BlYy5qcyJdLCJuYW1lcyI6WyJteUZ1bmN0aW9ucyIsInJlcXVpcmUiLCJmaXh0dXJlRGF0YSIsIl9fY29sbGVjdGlvbl9fIiwicGVvcGxlIiwiX19kb2NfXyIsInBlcnNvbl9hIiwibmFtZSIsImV2ZW50cyIsInVzZXJfYiIsInJlZmVyZW5jZSIsImV2ZW50X2EiLCJidXNpbmVzc2VzIiwidGFibGVzIiwiYnVzaW5lc3NfYSIsInRhYmxlX2EiLCJkZXNjcmliZSIsImRiIiwiTW9ja0ZpcmViYXNlIiwiZG9uZSIsInRlc3QiXSwibWFwcGluZ3MiOiJBQUFBLE1BQU1BLGNBQWNDLFFBQVEsU0FBUixDQUFwQjs7QUFFQTtBQUNBOztBQUVBQSxRQUFRLHNCQUFSOztBQUVBLE1BQU1DLGNBQWM7QUFDbEJDLGtCQUFnQjtBQUNkQyxZQUFRO0FBQ05DLGVBQVM7QUFDUEMsa0JBQVU7QUFDUkMsZ0JBQU0sRUFERTs7QUFHUkosMEJBQWdCO0FBQ2RLLG9CQUFRO0FBQ05ILHVCQUFTO0FBQ1BJLHdCQUFRO0FBQ05DLDZCQUFXO0FBREw7QUFERDtBQURIO0FBRE07QUFIUjtBQURIO0FBREgsS0FETTtBQWtCZEYsWUFBUTtBQUNOSCxlQUFTO0FBQ1BNLGlCQUFTO0FBQ1BKLGdCQUFNLEVBREM7O0FBR1BKLDBCQUFnQjtBQUNkUyx3QkFBWTtBQUNWUCx1QkFBUztBQUNQSSx3QkFBUTtBQUNOQyw2QkFBVztBQURMO0FBREQ7QUFEQyxhQURFO0FBUWRHLG9CQUFRO0FBQ05SLHVCQUFTO0FBQ1BJLHdCQUFRO0FBQ05DLDZCQUFXO0FBREw7QUFERDtBQURILGFBUk07QUFlZE4sb0JBQU87QUFDTEMsdUJBQVM7QUFDUEksd0JBQVE7QUFDTkMsNkJBQVc7QUFETDtBQUREO0FBREo7QUFmTztBQUhUO0FBREY7QUFESCxLQWxCTTtBQWlEZEUsZ0JBQVk7QUFDVlAsZUFBUztBQUNQUyxvQkFBWTtBQUNWUCxnQkFBTSxFQURJOztBQUdWSiwwQkFBZ0I7QUFDZEMsb0JBQVE7QUFDTkMsdUJBQVM7QUFDUEksd0JBQVE7QUFDTkMsNkJBQVc7QUFETDtBQUREO0FBREg7QUFETTtBQUhOO0FBREw7QUFEQyxLQWpERTtBQWtFZEcsWUFBUTtBQUNOUixlQUFTO0FBQ1BVLGlCQUFTO0FBQ1BSLGdCQUFNLEVBREM7O0FBR1BKLDBCQUFnQjtBQUNkQyxvQkFBUTtBQUNOQyx1QkFBUztBQUNQSSx3QkFBUTtBQUNOQyw2QkFBVztBQURMO0FBREQ7QUFESDtBQURNO0FBSFQ7QUFERjtBQURIO0FBbEVNO0FBREUsQ0FBcEI7O0FBdUZBTSxTQUFTLEVBQVQsRUFBYSxNQUFNOztBQUVqQixRQUFNQyxLQUFLLElBQUlDLFlBQUosQ0FBaUJoQixXQUFqQixDQUFYOztBQUVBYyxXQUFTLGlCQUFULEVBQTRCRyxRQUFROztBQUVsQ0MsU0FBSyxvQkFBTCxFQUEyQkQsUUFBUSxDQUVsQyxDQUZEO0FBSUQsR0FORDs7QUFRQUgsV0FBUyxpQkFBVCxFQUE0QkcsUUFBUSxDQUVuQyxDQUZEOztBQUlBSCxXQUFTLGVBQVQsRUFBMEJHLFFBQVEsQ0FFakMsQ0FGRDs7QUFJQUgsV0FBUyxpQkFBVCxFQUE0QkcsUUFBUSxDQUVuQyxDQUZEOztBQUlBSCxXQUFTLGlCQUFULEVBQTRCRyxRQUFRLENBRW5DLENBRkQ7QUFJRCxDQTVCRCIsImZpbGUiOiJjcnVkLnNwZWMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBteUZ1bmN0aW9ucyA9IHJlcXVpcmUoJy4uL2NydWQnKTtcblxuLy8gamVzdC5tb2NrKCdjb3JzJyk7IC8vIFNlZSBtYW51YWwgbW9jayBpbiAuLi9fX21vY2tzX18vY29ycy5qc1xuLy8gcmVxdWlyZSgnY29ycycpOyBcblxucmVxdWlyZSgnbW9jay1jbG91ZC1maXJlc3RvcmUnKVxuXG5jb25zdCBmaXh0dXJlRGF0YSA9IHtcbiAgX19jb2xsZWN0aW9uX186IHtcbiAgICBwZW9wbGU6IHtcbiAgICAgIF9fZG9jX186IHtcbiAgICAgICAgcGVyc29uX2E6IHtcbiAgICAgICAgICBuYW1lOiAnJyxcblxuICAgICAgICAgIF9fY29sbGVjdGlvbl9fOiB7XG4gICAgICAgICAgICBldmVudHM6IHtcbiAgICAgICAgICAgICAgX19kb2NfXzoge1xuICAgICAgICAgICAgICAgIHVzZXJfYjoge1xuICAgICAgICAgICAgICAgICAgcmVmZXJlbmNlOiAnX19yZWZfXzpldmVudHMvZXZlbnRfYSdcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9LFxuICAgIGV2ZW50czoge1xuICAgICAgX19kb2NfXzoge1xuICAgICAgICBldmVudF9hOiB7XG4gICAgICAgICAgbmFtZTogJycsXG5cbiAgICAgICAgICBfX2NvbGxlY3Rpb25fXzoge1xuICAgICAgICAgICAgYnVzaW5lc3Nlczoge1xuICAgICAgICAgICAgICBfX2RvY19fOiB7XG4gICAgICAgICAgICAgICAgdXNlcl9iOiB7XG4gICAgICAgICAgICAgICAgICByZWZlcmVuY2U6ICdfX3JlZl9fOmJ1c2luZXNzZXMvYnVzaW5lc3NfYSdcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH0sXG4gICAgICAgICAgICB0YWJsZXM6IHtcbiAgICAgICAgICAgICAgX19kb2NfXzoge1xuICAgICAgICAgICAgICAgIHVzZXJfYjoge1xuICAgICAgICAgICAgICAgICAgcmVmZXJlbmNlOiAnX19yZWZfXzp0YWJsZXMvdGFibGVfYSdcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH0sXG4gICAgICAgICAgICBwZW9wbGU6e1xuICAgICAgICAgICAgICBfX2RvY19fOiB7XG4gICAgICAgICAgICAgICAgdXNlcl9iOiB7XG4gICAgICAgICAgICAgICAgICByZWZlcmVuY2U6ICdfX3JlZl9fOnBlb3BsZS9wZXJzb25fYSdcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cbiAgICAgICAgICB9XG4gICAgICAgIH0gICAgICAgIFxuICAgICAgfVxuICAgIH0sXG4gICAgYnVzaW5lc3Nlczoge1xuICAgICAgX19kb2NfXzogeyAgIFxuICAgICAgICBidXNpbmVzc19hOiB7XG4gICAgICAgICAgbmFtZTogJycsXG5cbiAgICAgICAgICBfX2NvbGxlY3Rpb25fXzoge1xuICAgICAgICAgICAgcGVvcGxlOiB7XG4gICAgICAgICAgICAgIF9fZG9jX186IHtcbiAgICAgICAgICAgICAgICB1c2VyX2I6IHtcbiAgICAgICAgICAgICAgICAgIHJlZmVyZW5jZTogJ19fcmVmX186cGVvcGxlL3BlcnNvbl9hJ1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgfSAgICAgICAgICAgICBcbiAgICAgIH1cbiAgICB9LFxuICAgIHRhYmxlczoge1xuICAgICAgX19kb2NfXzogeyAgIFxuICAgICAgICB0YWJsZV9hOiB7XG4gICAgICAgICAgbmFtZTogJycsXG5cbiAgICAgICAgICBfX2NvbGxlY3Rpb25fXzoge1xuICAgICAgICAgICAgcGVvcGxlOiB7XG4gICAgICAgICAgICAgIF9fZG9jX186IHtcbiAgICAgICAgICAgICAgICB1c2VyX2I6IHtcbiAgICAgICAgICAgICAgICAgIHJlZmVyZW5jZTogJ19fcmVmX186cGVvcGxlL3BlcnNvbl9hJ1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICAgIH1cbiAgICAgICAgfSAgICAgICAgICAgICBcbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cblxuZGVzY3JpYmUoJycsICgpID0+IHtcbiAgXG4gIGNvbnN0IGRiID0gbmV3IE1vY2tGaXJlYmFzZShmaXh0dXJlRGF0YSk7XG5cbiAgZGVzY3JpYmUoJ0xpc3QgYWxsIHBlb3BsZScsIGRvbmUgPT4ge1xuXG4gICAgdGVzdCgncmV0dXJucyBhbGwgcGVvcGxlJywgZG9uZSA9PiB7XG4gICAgICBcbiAgICB9KTsgIFxuXG4gIH0pXG5cbiAgZGVzY3JpYmUoJ0NyZWF0ZSBhIHBlcnNvbicsIGRvbmUgPT4ge1xuXG4gIH0pXG5cbiAgZGVzY3JpYmUoJ1JlYWQgYSBwZXJzb24nLCBkb25lID0+IHtcblxuICB9KVxuXG4gIGRlc2NyaWJlKCdVcGRhdGUgYSBwZXJzb24nLCBkb25lID0+IHtcblxuICB9KVxuXG4gIGRlc2NyaWJlKCdSZW1vdmUgYSBwZXJzb24nLCBkb25lID0+IHtcblxuICB9KVxuXG59KSJdfQ==

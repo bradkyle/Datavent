@@ -1,4 +1,10 @@
 
+const request = require('supertest');
+const app = require('../index')
+
+// jest.mock('cors'); // See manual mock in ../__mocks__/cors.js
+// require('cors'); // Jest will return the mock not the real module
+
 const test = require('firebase-functions-test')();
 
 // const key = functions.config().stripe.key;
@@ -9,26 +15,42 @@ const test = require('firebase-functions-test')();
 //     storageBucket: 'my-project.appspot.com',
 //     projectId: 'my-project',
 //   }, 'path/to/serviceAccountKey.json');
-  
 
-describe('API', () => {
-    beforeEach((done) => {
-        Book.remove({}, (err) => { 
-            done();         
-        });     
+describe('Test the person path', () => {
+
+    test('It should response the GET method', (done) => {
+        request(app).get('/person').then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        });
     });
-
-    describe('/GET people', () => {
-        it('it should GET all the books', (done) => {
-        chai.request(server)
-            .get('/book')
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.be.eql(0);
-                done();
-            });
+    
+    test('It should responnd to the POST method', (done) => {
+        request(app).get('/person').then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
         });
     });
 
+    test('It should responnd to the POST method', (done) => {
+        request(app).get('/person').then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        });
+    });
+
+    test('It should responnd to the POST method', (done) => {
+        request(app).get('/person').then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        });
+    });
+
+    test('It should responnd to the POST method', (done) => {
+        request(app).get('/person').then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        });
+    });
+    
 });
