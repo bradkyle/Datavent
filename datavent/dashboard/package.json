@@ -10,7 +10,7 @@
     "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js",
     "build:sit": "cross-env NODE_ENV=production env_config=sit node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "test": "karma start --single-run"
+    "test": "cross-env BABEL_ENV=test karma start --single-run"
   },
   "dependencies": {
     "axios": "0.17.1",
@@ -41,6 +41,7 @@
     "vue-router": "3.0.1",
     "vue-splitpane": "1.0.2",
     "vuedraggable": "2.15.0",
+    "vuefire": "^2.0.0-alpha.10",
     "vuetify": "^1.0.11",
     "vuetrend": "^0.3.2",
     "vuex": "3.0.1",

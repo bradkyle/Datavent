@@ -1,13 +1,13 @@
-import firebase from 'firebase'
+import { auth } from '../main'
 
 export function loginByUsername(email, password) {
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  auth.signInWithEmailAndPassword(email, password).catch(function(error) {
     console.log(error.message + ': ' + error.code)
   })
 }
 
 export function logout() {
-  firebase.auth().signOut().catch(function(error) {
+  auth.signOut().catch(function(error) {
     // An error happened.
     console.log(error.message + ': ' + error.code)
   })

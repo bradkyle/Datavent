@@ -111,3 +111,6 @@ typings/
 
 # account keys
 account.json
+
+# environment files
+.env

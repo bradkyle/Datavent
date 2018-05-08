@@ -19,22 +19,26 @@ import './mock' // simulation data
 
 import * as filters from './filters' // global filters
 
-import firebase from 'firebase'
-import '@firebase/firestore'
+import VueFire from 'vuefire'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 store.dispatch('SetRoutes')
 
 // Initialize Firebase
-var config = {
+Vue.use(VueFire)
+firebase.initializeApp({
   apiKey: 'AIzaSyBFuzfljFRD8GkO4GYd5qBz3aY9j_ByoXQ',
   authDomain: 'datavent-ba7dd.firebaseapp.com',
   databaseURL: 'https://datavent-ba7dd.firebaseio.com',
   projectId: 'datavent-ba7dd',
   storageBucket: 'datavent-ba7dd.appspot.com',
   messagingSenderId: '742579788953'
-}
+})
 
-firebase.initializeApp(config)
+export const db = firebase.firestore()
+db.settings({ timestampsInSnapshots: true })
+export const auth = firebase.auth()
 
 Vue.use(Element, {
   size: 'medium', // set element-ui default size

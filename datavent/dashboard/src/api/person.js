@@ -1,16 +1,9 @@
 import request from '@/utils/request'
-import firebase from 'firebase'
-import '@firebase/firestore'
-
-const collection = 'people'
 
 export function fetchList(query) {
-  firebase.firestore().collection(collection).get().then((data) => {
-    console.log('People')
-    return {
-      total: data.length,
-      items: data
-    }
+  return request({
+    url: '/person/list',
+    method: 'get'
   })
 }
 
@@ -36,3 +29,7 @@ export function updatePerson(data) {
     data
   })
 }
+
+// const people = []
+//   
+//   return people

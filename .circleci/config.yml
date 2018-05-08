@@ -73,6 +73,9 @@ jobs:
       - run:
           name: Deploy dashboard to firebase hosting
           command: cd datavent/dashboard/ && firebase deploy --token "$FIREBASE_DEPLOY_TOKEN"
+      - run:
+          name: Deploy api to firebase functions
+          command: cd datavent/api/ && firebase deploy --only functions
       
 workflows:
   version: 2
@@ -87,6 +90,9 @@ workflows:
               only:
                 - dev
                 - /feature-.*/
+      # - test_functions:
+      #     requires:
+      #       - 
       - deploy:
           requires:
             - build_dashboard

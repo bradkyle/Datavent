@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    build: ./api/
+    command: bash -c "firebase serve --only functions"
+    ports:
+      - "5000:5000"
+      - "9005:9005"
+    env_file: .env
+    volumes:
+      - ./api:/usr/src/app/api

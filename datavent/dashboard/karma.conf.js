@@ -2,7 +2,7 @@ var webpackConfig = require('./build/webpack.dev.conf.js')
 
 module.exports = function (config) {
   config.set({
-    frameworks: ['mocha', , 'sinon-chai'],
+    frameworks: ['mocha', 'sinon-chai'],
 
     files: [
       'test/**/*.spec.js'
