@@ -16,40 +16,17 @@ require('firebase-functions').config = jest.fn(() => {
   };
 });
 
+
+// test functionality for crud
+
+const myFunctions = require('../crud.js');
+
 describe('CRUD', () => {
 
   beforeEach((done) => {
     
   });
 
-  describe('list', () => {
-    it('Returns an object containing all items in a collection', () => {
-      
-    })
-  })
-
-  describe('create', () => {
-    it('Creates an item', () => {
-
-    })
-  })
-
-  describe('read', () => {
-    it('Returns an object containing item requested', () => {
-
-    })
-  })
   
-  describe('update', () => {
-    it('Updates an item', () => {
-
-    })
-  })
-
-  describe('delete', () => {
-    it('', () => {
-
-    })
-  })
 
 })
