@@ -8,20 +8,25 @@ module.exports = {
     var doc = new PDFDocument({
       size: [595, 852]
     });
-    var stream = doc.pipe(fs.createWriteStream('./output.pdf'));
+    doc.pipe(fs.createWriteStream('./output.pdf'));
 
     const tag_height = 161.5
     const tag_width = 260
 
-    for (x=1;x<6;x++){
+    let y = -1;
+
+    for (x=0;x<10;x++){
       let position_x = 0
-      let position_y = 0
+      let position_y = function(y, tag_height) {
+          return y * tag_height
+      }
       
       if(x % 2 === 0){
           position_x = tag_width;
+          y++;
       }
       
-      doc.rect(position_x, position_y, tag_width, tag_height).stroke()
+      doc.rect(position_x, position_y(y, tag_height), tag_width, tag_height).stroke()
     }
 
 

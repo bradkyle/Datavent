@@ -114,3 +114,6 @@ account.json
 
 # environment files
 .env
+
+# 
+jest_o/
