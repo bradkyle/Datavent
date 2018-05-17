@@ -71,7 +71,7 @@ export const constantRouterMap = [
     redirect: '/events/index',
     children: [{
       path: 'index',
-      component: _import('example/table/complexTable'),
+      component: _import('events/Events'),
       name: 'events',
       meta: { title: 'Events', icon: 'documentation', noCache: true }
     }]
